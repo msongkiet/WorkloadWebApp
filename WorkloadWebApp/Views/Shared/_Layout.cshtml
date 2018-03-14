@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Workload Data Center</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body style="background-color:#f7f7f7">
+    <div class="container">
+        <nav class="navbar fixed-top navbar-dark bg-dark navbar-expand-lg">
+            <a class="navbar-brand" href="#">Workload Data Center</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Workload/Index">Workload Record</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Workload/ProjectSelection">Project Selection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Workload/Report">Report</a>
+                    </li>
+
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Data Management</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="~/Admin/Index">User Management</a>
+                                <a class="dropdown-item" href="#">Project Database</a>
+                            </div>
+                        </li>
+                    }
+                    @*<li class="nav-item">
+                        <a class="nav-link" href="~/Workload/About">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="~/Workload/Contact">Contact</a>
+                    </li>*@
+                </ul>
+
+                @Html.Partial("_LoginPartial")
+            </div>
+        </nav>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Cementhai Ceramics Co., Ltd.</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

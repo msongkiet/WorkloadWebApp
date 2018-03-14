@@ -1,0 +1,535 @@
+﻿@model IEnumerable<WorkloadWebApp.Models.ProjectTB>
+@using Microsoft.AspNet.Identity
+@using WorkloadWebApp.Models;
+
+@{
+    ViewBag.Title = "Project Selection";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var Category1 = "Geoluxe";
+    var Category2 = "Energy";
+    var Category3 = "Support TCC";
+    var Category4 = "IP";
+    var Category5 = "Management";
+    var Category6 = "Tech biz";
+    var Category7 = "Design";
+    var Category8 = "Others";
+
+    bool TitleTypeRD = true;
+    bool TitleTypeNonRD = true;
+
+    string RD = "Research";
+    string NonRD = "Non-RD";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form id="ProjectSelectionForm">
+    <div class="container">
+        <div class="card-columns">
+            @*Category1*@
+            <div class="card card-block">
+                <h4 class="card-title">@Category1</h4>
+                <p class="card-text">
+                    @{ TitleTypeRD = true;}
+                    @{ foreach (var item in Model)
+                        {
+                            if (item.ProjectActive == true && item.ProjectCategory == @Category1)
+                            {
+                                if (item.ProjectType == "RD")
+                                {
+                                    if (TitleTypeRD == true)
+                                    {
+                                        <h6>@RD</h6>
+                                    }
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="@item.ProjectID.ToString()" name="@item.ProjectName.ToString()" value="@item.ProjectID">
+                                        <label class="custom-control-label" for="@item.ProjectID.ToString()">@item.ProjectName.ToString()</label>
+                                    </div>
+                                    TitleTypeRD = false;
+                                }
+                            }
+                        }
+                    }
+
+                    @{ TitleTypeNonRD = true;}
+                    @{ foreach (var item in Model)
+                        {
+                            if (item.ProjectActive == true && item.ProjectCategory == @Category1)
+                            {
+                                if (item.ProjectType == "Non-RD")
+                                {
+                                    if (TitleTypeNonRD == true && TitleTypeRD == false)
+                                    {
+                                        <br />
+                                        <h6>@NonRD</h6>
+                                    }
+                                    else if (TitleTypeNonRD == true && TitleTypeRD == true)
+                                    {
+                                        <h6>Non-RD</h6>
+                                    }
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="@item.ProjectID.ToString()" name="@item.ProjectName.ToString()" value="@item.ProjectID">
+                                        <label class="custom-control-label" for="@item.ProjectID.ToString()">@item.ProjectName.ToString()</label>
+                                    </div>
+                                    TitleTypeNonRD = false;
+                                }
+                            }
+                        }
+                    }
+                </p>
+            </div>
+
+            @*Category2*@
+            <div class="card card-block">
+                <h4 class="card-title">@Category2</h4>
+                <p class="card-text">
+                    @{ TitleTypeRD = true;}
+                    @{ foreach (var item in Model)
+                        {
+                            if (item.ProjectActive == true && item.ProjectCategory == @Category2)
+                            {
+                                if (item.ProjectType == "RD")
+                                {
+                                    if (TitleTypeRD == true)
+                                    {
+                                        <h6>@RD</h6>
+                                    }
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="@item.ProjectID.ToString()" name="@item.ProjectName.ToString()" value="@item.ProjectID">
+                                        <label class="custom-control-label" for="@item.ProjectID.ToString()">@item.ProjectName.ToString()</label>
+                                    </div>
+                                    TitleTypeRD = false;
+                                }
+                            }
+                        }
+                    }
+
+                    @{ TitleTypeNonRD = true;}
+                    @{ foreach (var item in Model)
+                        {
+                            if (item.ProjectActive == true && item.ProjectCategory == @Category2)
+                            {
+                                if (item.ProjectType == "Non-RD")
+                                {
+                                    if (TitleTypeNonRD == true && TitleTypeRD == false)
+                                    {
+                                        <br />
+                                        <h6>@NonRD</h6>
+                                    }
+                                    else if (TitleTypeNonRD == true && TitleTypeRD == true)
+                                    {
+                                        <h6>@NonRD</h6>
+                                    }
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="@item.ProjectID.ToString()" name="@item.ProjectName.ToString()" value="@item.ProjectID">
+                                        <label class="custom-control-label" for="@item.ProjectID.ToString()">@item.ProjectName.ToString()</label>
+                                    </div>
+                                    TitleTypeNonRD = false;
+                                }
+                            }
+                        }
+                    }
+                </p>
+            </div>
+
+            @*Category3*@
+            <div class="card card-block">
+                <h4 class="card-title">@Category3</h4>
+                <p class="card-text">
+                    @{TitleTypeRD = true;}
+                    @{ foreach (var item in Model)
+                        {
+                            if (item.ProjectActive == true && item.ProjectCategory == @Category3)
+                            {
+                                if (item.ProjectType == "RD")
+                                {
+                                    if (TitleTypeRD == true)
+                                    {
+                                        <h6>@RD</h6>
+                                    }
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="@item.ProjectID.ToString()" name="@item.ProjectName.ToString()" value="@item.ProjectID">
+                                        <label class="custom-control-label" for="@item.ProjectID.ToString()">@item.ProjectName.ToString()</label>
+                                    </div>
+                                    TitleTypeRD = false;
+                                }
+                            }
+                        }
+                    }
+
+                    @{TitleTypeNonRD = true;}
+                    @{ foreach (var item in Model)
+                        {
+                            if (item.ProjectActive == true && item.ProjectCategory == @Category3)
+                            {
+                                if (item.ProjectType == "Non-RD")
+                                {
+                                    if (TitleTypeNonRD == true && TitleTypeRD == false)
+                                    {
+                                        <br />
+                                        <h6>@NonRD</h6>
+                                    }
+                                    else if (TitleTypeNonRD == true && TitleTypeRD == true)
+                                    {
+                                        <h6>@NonRD</h6>
+                                    }
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="@item.ProjectID.ToString()" name="@item.ProjectName.ToString()" value="@item.ProjectID">
+                                        <label class="custom-control-label" for="@item.ProjectID.ToString()">@item.ProjectName.ToString()</label>
+                                    </div>
+                                    TitleTypeNonRD = false;
+                                }
+                            }
+                        }
+                    }
+                </p>
+            </div>
+
+            @*Category4*@
+            <div class="card card-block">
+                <h4 class="card-title">@Category4</h4>
+                <p class="card-text">
+                    @{ TitleTypeRD = true;}
+                    @{ foreach (var item in Model)
+                        {
+                            if (item.ProjectActive == true && item.ProjectCategory == @Category4)
+                            {
+                                if (item.ProjectType == "RD")
+                                {
+                                    if (TitleTypeRD == true)
+                                    {
+                                        <h6>@RD</h6>
+                                    }
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="@item.ProjectID.ToString()" name="@item.ProjectName.ToString()" value="@item.ProjectID">
+                                        <label class="custom-control-label" for="@item.ProjectID.ToString()">@item.ProjectName.ToString()</label>
+                                    </div>
+                                    TitleTypeRD = false;
+                                }
+                            }
+                        }
+                    }
+
+                    @{ TitleTypeNonRD = true;}
+                    @{ foreach (var item in Model)
+                        {
+                            if (item.ProjectActive == true && item.ProjectCategory == @Category4)
+                            {
+                                if (item.ProjectType == "Non-RD")
+                                {
+                                    if (TitleTypeNonRD == true && TitleTypeRD == false)
+                                    {
+                                        <br />
+                                        <h6>@NonRD</h6>
+                                    }
+                                    else if (TitleTypeNonRD == true && TitleTypeRD == true)
+                                    {
+                                        <h6>@NonRD</h6>
+                                    }
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="@item.ProjectID.ToString()" name="@item.ProjectName.ToString()" value="@item.ProjectID">
+                                        <label class="custom-control-label" for="@item.ProjectID.ToString()">@item.ProjectName.ToString()</label>
+                                    </div>
+                                    TitleTypeNonRD = false;
+                                }
+                            }
+                        }
+                    }
+                </p>
+            </div>
+
+            @*Category5*@
+            <div class="card card-block">
+                <h4 class="card-title">@Category5</h4>
+                <p class="card-text">
+                    @{ TitleTypeRD = true;}
+                    @{ foreach (var item in Model)
+                        {
+                            if (item.ProjectActive == true && item.ProjectCategory == @Category5)
+                            {
+                                if (item.ProjectType == "RD")
+                                {
+                                    if (TitleTypeRD == true)
+                                    {
+                                        <h6>@RD</h6>
+                                    }
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="@item.ProjectID.ToString()" name="@item.ProjectName.ToString()" value="@item.ProjectID">
+                                        <label class="custom-control-label" for="@item.ProjectID.ToString()">@item.ProjectName.ToString()</label>
+                                    </div>
+                                    TitleTypeRD = false;
+                                }
+                            }
+                        }
+                    }
+
+                    @{ TitleTypeNonRD = true;}
+                    @{ foreach (var item in Model)
+                        {
+                            if (item.ProjectActive == true && item.ProjectCategory == @Category5)
+                            {
+                                if (item.ProjectType == "Non-RD")
+                                {
+                                    if (TitleTypeNonRD == true && TitleTypeRD == false)
+                                    {
+                                        <br />
+                                        <h6>@NonRD</h6>
+                                    }
+                                    else if (TitleTypeNonRD == true && TitleTypeRD == true)
+                                    {
+                                        <h6>@NonRD</h6>
+                                    }
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="@item.ProjectID.ToString()" name="@item.ProjectName.ToString()" value="@item.ProjectID">
+                                        <label class="custom-control-label" for="@item.ProjectID.ToString()">@item.ProjectName.ToString()</label>
+                                    </div>
+                                    TitleTypeNonRD = false;
+                                }
+                            }
+                        }
+                    }
+                </p>
+            </div>
+
+            @*Category6*@
+            <div class="card card-block">
+                <h4 class="card-title">@Category6</h4>
+                <p class="card-text">
+                    @{ TitleTypeRD = true;}
+                    @{ foreach (var item in Model)
+                        {
+                            if (item.ProjectActive == true && item.ProjectCategory == @Category6)
+                            {
+                                if (item.ProjectType == "RD")
+                                {
+                                    if (TitleTypeRD == true)
+                                    {
+                                        <h6>@RD</h6>
+                                    }
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="@item.ProjectID.ToString()" name="@item.ProjectName.ToString()" value="@item.ProjectID">
+                                        <label class="custom-control-label" for="@item.ProjectID.ToString()">@item.ProjectName.ToString()</label>
+                                    </div>
+                                    TitleTypeRD = false;
+                                }
+                            }
+                        }
+                    }
+
+                    @{ TitleTypeNonRD = true;}
+                    @{ foreach (var item in Model)
+                        {
+                            if (item.ProjectActive == true && item.ProjectCategory == @Category6)
+                            {
+                                if (item.ProjectType == "Non-RD")
+                                {
+                                    if (TitleTypeNonRD == true && TitleTypeRD == false)
+                                    {
+                                        <br />
+                                        <h6>@NonRD</h6>
+                                    }
+                                    else if (TitleTypeNonRD == true && TitleTypeRD == true)
+                                    {
+                                        <h6>@NonRD</h6>
+                                    }
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="@item.ProjectID.ToString()" name="@item.ProjectName.ToString()" value="@item.ProjectID">
+                                        <label class="custom-control-label" for="@item.ProjectID.ToString()">@item.ProjectName.ToString()</label>
+                                    </div>
+                                    TitleTypeNonRD = false;
+                                }
+                            }
+                        }
+                    }
+                </p>
+            </div>
+
+            @*Category7*@
+            <div class="card card-block">
+                <h4 class="card-title">@Category7</h4>
+                <p class="card-text">
+                    @{ TitleTypeRD = true;}
+                    @{ foreach (var item in Model)
+                        {
+                            if (item.ProjectActive == true && item.ProjectCategory == @Category7)
+                            {
+                                if (item.ProjectType == "RD")
+                                {
+                                    if (TitleTypeRD == true)
+                                    {
+                                        <h6>@RD</h6>
+                                    }
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="@item.ProjectID.ToString()" name="@item.ProjectName.ToString()" value="@item.ProjectID">
+                                        <label class="custom-control-label" for="@item.ProjectID.ToString()">@item.ProjectName.ToString()</label>
+                                    </div>
+                                    TitleTypeRD = false;
+                                }
+                            }
+                        }
+                    }
+
+                    @{ TitleTypeNonRD = true;}
+                    @{ foreach (var item in Model)
+                        {
+                            if (item.ProjectActive == true && item.ProjectCategory == @Category7)
+                            {
+                                if (item.ProjectType == "Non-RD")
+                                {
+                                    if (TitleTypeNonRD == true && TitleTypeRD == false)
+                                    {
+                                        <br />
+                                        <h6>@NonRD</h6>
+                                    }
+                                    else if (TitleTypeNonRD == true && TitleTypeRD == true)
+                                    {
+                                        <h6>@NonRD</h6>
+                                    }
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="@item.ProjectID.ToString()" name="@item.ProjectName.ToString()" value="@item.ProjectID">
+                                        <label class="custom-control-label" for="@item.ProjectID.ToString()">@item.ProjectName.ToString()</label>
+                                    </div>
+                                    TitleTypeNonRD = false;
+                                }
+                            }
+                        }
+                    }
+                </p>
+            </div>
+
+            @*Category8*@
+            <div class="card card-block">
+                <h4 class="card-title">@Category8</h4>
+                <p class="card-text">
+                    @{ TitleTypeRD = true;}
+                    @{ foreach (var item in Model)
+                        {
+                            if (item.ProjectActive == true && item.ProjectCategory == @Category8)
+                            {
+                                if (item.ProjectType == "RD")
+                                {
+                                    if (TitleTypeRD == true)
+                                    {
+                                        <h6>@RD</h6>
+                                    }
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="@item.ProjectID.ToString()" name="@item.ProjectName.ToString()" value="@item.ProjectID">
+                                        <label class="custom-control-label" for="@item.ProjectID.ToString()">@item.ProjectName.ToString()</label>
+                                    </div>
+                                    TitleTypeRD = false;
+                                }
+                            }
+                        }
+                    }
+
+                    @{ TitleTypeNonRD = true;}
+                    @{ foreach (var item in Model)
+                        {
+                            if (item.ProjectActive == true && item.ProjectCategory == @Category8)
+                            {
+                                if (item.ProjectType == "Non-RD")
+                                {
+                                    if (TitleTypeNonRD == true && TitleTypeRD == false)
+                                    {
+                                        <br />
+                                        <h6>@NonRD</h6>
+                                    }
+                                    else if (TitleTypeNonRD == true && TitleTypeRD == true)
+                                    {
+                                        <h6>@NonRD</h6>
+                                    }
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="@item.ProjectID.ToString()" name="@item.ProjectName.ToString()" value="@item.ProjectID">
+                                        <label class="custom-control-label" for="@item.ProjectID.ToString()">@item.ProjectName.ToString()</label>
+                                    </div>
+                                    TitleTypeNonRD = false;
+                                }
+                            }
+                        }
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+
+    @*<button onclick="Submit()" type="submit" class="btn btn-outline-primary">Submit</button>*@
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#saveDBModal" onclick="SelectedPopup()">
+        Submit
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="saveDBModal" tabindex="-1" role="dialog" aria-labelledby="saveDBModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="saveDBModalLabel">Project Selected</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="Submit()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</form>
+
+<script type="text/javascript">
+
+    window.onload = function () {
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("QueryProjectList", "Workload")',
+            success: function (response) {
+                var list = response.name;
+                var count = response.count;
+                for (var i = 0; i < count; i++) {
+                    document.getElementById(list[i]).checked = true;
+                }
+            }
+        });
+    }
+
+    function Submit() {
+        event.preventDefault();
+        var SelectionForm = $("#ProjectSelectionForm").serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("SaveProjectSelectionDB", "Workload")',
+            data: SelectionForm,
+            success: function (response) {
+                alert("Success");
+                //bootbox.alert("Success");
+                window.location.href = "Index";
+            }
+        });
+    }
+
+    function SelectedPopup() {
+        var SelectionForm = $("#ProjectSelectionForm").serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("PopupProjectSelected", "Workload")',
+            data: SelectionForm,
+            success: function (response) {
+                var list = response.list;
+                var count = response.count;
+                $("#modal-body").empty();
+                for (var i = 0; i < count; i++) {
+                    var index = i + 1;
+                    $("#modal-body").append(index + '-' + list[i]);
+                    $("#modal-body").append('<br />');
+                }
+            }
+        });
+    }
+
+</script>

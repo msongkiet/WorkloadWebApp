@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="78a6c858521e4a1fbb6ed5c4687ba437" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="WorkloadDBModel.EmployeeTB" Width="1.5" PointX="0.75" PointY="0.5" />
+        <EntityTypeShape EntityType="WorkloadDBModel.ProjectSelectionTB" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkloadDBModel.ProjectTB" Width="1.5" PointX="4.625" PointY="0.5" />
+        <EntityTypeShape EntityType="WorkloadDBModel.UnitTB" Width="1.5" PointX="8.375" PointY="0.5" />
+        <EntityTypeShape EntityType="WorkloadDBModel.C5dayHolidayTB" Width="1.5" PointX="4.625" PointY="3.375" />
+        <EntityTypeShape EntityType="WorkloadDBModel.C6dayHolidayTB" Width="1.5" PointX="2.75" PointY="3.375" />
+        <EntityTypeShape EntityType="WorkloadDBModel.RecordMonthTB" Width="1.5" PointX="10.375" PointY="0.5" />
+        <EntityTypeShape EntityType="WorkloadDBModel.WeekTB" Width="1.5" PointX="12.375" PointY="0.5" />
+        <EntityTypeShape EntityType="WorkloadDBModel.WorkloadRecordTB" Width="1.5" PointX="8.5" PointY="2.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

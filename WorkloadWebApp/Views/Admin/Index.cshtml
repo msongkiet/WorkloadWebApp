@@ -1,0 +1,58 @@
+﻿@model PagedList.IPagedList<WorkloadWebApp.Models.ExpandedUserDTO>
+@using PagedList.Mvc
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Edit Roles", "ViewAllRoles", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Back to Home", "../", null, new { @class = "btn btn-default" })
+</p>
+
+<br />
+
+@using (Html.BeginForm("Index", "Admin", FormMethod.Get))
+{
+    <div class="form-group">
+        Search:&nbsp; @Html.TextBox("searchStringUserNameOrEmail", ViewBag.CurrentFilter as string)
+
+        <input type="submit" value="Search" />
+    </div>
+}
+
+<br />
+
+<table class="table">
+    <tr>
+        <th> Email </th>
+        <th> Locked out </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditUser", new { UserName = item.UserName })
+                @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
+                {
+                    @Html.ActionLink("Delete", "DeleteUser", new { UserName = item.UserName },
+                        new { onclick = "return confirm('Are you sure you want to delete this user?');" })
+                }
+            </td>
+        </tr>
+    }
+
+</table>
