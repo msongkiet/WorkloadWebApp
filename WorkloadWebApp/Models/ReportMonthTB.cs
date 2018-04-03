@@ -12,13 +12,12 @@ namespace WorkloadWebApp.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class UnitTB
+    public partial class ReportMonthTB
     {
-        public int UnitID { get; set; }
-        public string Unit { get; set; }
-        public string Division { get; set; }
-        public string ManagerID { get; set; }
-        public Nullable<bool> UnitActive { get; set; }
-        public string CostCenter { get; set; }
+        public int id { get; set; }
+        public Nullable<int> year { get; set; }
+        public Nullable<int> month { get; set; }
+        public Nullable<int> firstWeek { get; set; }
+        public Nullable<int> lastWeek { get; set; }
     }
 }

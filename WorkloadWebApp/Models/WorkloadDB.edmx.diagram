@@ -12,8 +12,9 @@
         <EntityTypeShape EntityType="WorkloadDBModel.C5dayHolidayTB" Width="1.5" PointX="4.625" PointY="3.375" />
         <EntityTypeShape EntityType="WorkloadDBModel.C6dayHolidayTB" Width="1.5" PointX="2.75" PointY="3.375" />
         <EntityTypeShape EntityType="WorkloadDBModel.RecordMonthTB" Width="1.5" PointX="10.375" PointY="0.5" />
-        <EntityTypeShape EntityType="WorkloadDBModel.WeekTB" Width="1.5" PointX="12.375" PointY="0.5" />
-        <EntityTypeShape EntityType="WorkloadDBModel.WorkloadRecordTB" Width="1.5" PointX="8.5" PointY="2.75" />
+        <EntityTypeShape EntityType="WorkloadDBModel.WeekTB" Width="1.5" PointX="10.5" PointY="2.75" />
+        <EntityTypeShape EntityType="WorkloadDBModel.WorkloadRecordTB" Width="1.5" PointX="8.375" PointY="2.75" />
+        <EntityTypeShape EntityType="WorkloadDBModel.ReportMonthTB" Width="1.5" PointX="12.125" PointY="0.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -24,26 +24,28 @@
                     <li class="nav-item">
                         <a class="nav-link" href="~/Workload/ProjectSelection">Project Selection</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="~/Workload/Report">Report</a>
-                    </li>
 
                     @if (User.IsInRole("Administrator"))
                     {
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Report/Index">Report</a>
+                        </li>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Data Management</a>
                             <div class="dropdown-menu">
+                                <a class="dropdown-item" href="~/Database/CommitData">Commit Data</a>
                                 <a class="dropdown-item" href="~/Admin/Index">User Management</a>
-                                <a class="dropdown-item" href="#">Project Database</a>
+                                <a class="dropdown-item" href="~/Database/ProjectDatabase">Project Database</a>
                             </div>
                         </li>
                     }
                     @*<li class="nav-item">
-                        <a class="nav-link" href="~/Workload/About">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="~/Workload/Contact">Contact</a>
-                    </li>*@
+                            <a class="nav-link" href="~/Workload/About">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Workload/Contact">Contact</a>
+                        </li>*@
                 </ul>
 
                 @Html.Partial("_LoginPartial")

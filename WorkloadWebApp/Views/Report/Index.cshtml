@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Report</h2>
+
+<a href="//submit.shutterstock.com/?ref=196358228">
+    <img src="//ak.picdn.net/assets/cms/2d835909f1d8b9c27f3f149c89008c5a250a4b61-photographer_content.jpg" width="300" height="250" />
+</a>
+
+<button onclick="Submit()" type="submit" class="btn btn-outline-primary">Submit</button>
+
+<script type="text/javascript">
+    function Submit() {
+        event.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("ExportReport", "Report")',
+            //data: SelectionForm,
+            success: function () {            
+                alert("Pass");
+            }
+        });
+
+    }
+</script>

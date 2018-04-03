@@ -492,7 +492,9 @@
                 var list = response.name;
                 var count = response.count;
                 for (var i = 0; i < count; i++) {
-                    document.getElementById(list[i]).checked = true;
+                    if (list[i] != "999") { //leave id in project seletion table
+                        document.getElementById(list[i]).checked = true;
+                    }
                 }
             }
         });

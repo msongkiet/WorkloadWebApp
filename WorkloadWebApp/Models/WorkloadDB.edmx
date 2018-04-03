@@ -71,6 +71,16 @@
           <Property Name="firstWeek" Type="int" />
           <Property Name="lastWeek" Type="int" />
         </EntityType>
+        <EntityType Name="ReportMonthTB">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="year" Type="int" />
+          <Property Name="month" Type="int" />
+          <Property Name="firstWeek" Type="int" />
+          <Property Name="lastWeek" Type="int" />
+        </EntityType>
         <EntityType Name="UnitTB">
           <Key>
             <PropertyRef Name="UnitID" />
@@ -80,6 +90,7 @@
           <Property Name="Division" Type="nvarchar" MaxLength="50" />
           <Property Name="ManagerID" Type="nvarchar" MaxLength="11" />
           <Property Name="UnitActive" Type="bit" />
+          <Property Name="CostCenter" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="WeekTB">
           <Key>
@@ -90,24 +101,6 @@
           <Property Name="week" Type="int" />
           <Property Name="firstDate" Type="date" />
           <Property Name="lastDate" Type="date" />
-        </EntityType>
-        <EntityType Name="WorkloadRecord">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Username" Type="nvarchar" MaxLength="50" />
-          <Property Name="Year" Type="int" />
-          <Property Name="Month" Type="int" />
-          <Property Name="ProjectID" Type="int" />
-          <Property Name="WorkloadWeek1" Type="float" />
-          <Property Name="WorkloadWeek2" Type="float" />
-          <Property Name="WorkloadWeek3" Type="float" />
-          <Property Name="WorkloadWeek4" Type="float" />
-          <Property Name="WorkloadWeek5" Type="float" />
-          <Property Name="WorkloadWeek6" Type="float" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="250" />
-          <Property Name="CommitData" Type="bit" />
         </EntityType>
         <EntityType Name="WorkloadRecordTB">
           <Key>
@@ -130,9 +123,9 @@
           <EntitySet Name="ProjectSelectionTB" EntityType="Self.ProjectSelectionTB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjectTB" EntityType="Self.ProjectTB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RecordMonthTB" EntityType="Self.RecordMonthTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportMonthTB" EntityType="Self.ReportMonthTB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnitTB" EntityType="Self.UnitTB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WeekTB" EntityType="Self.WeekTB" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WorkloadRecord" EntityType="Self.WorkloadRecord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WorkloadRecordTB" EntityType="Self.WorkloadRecordTB" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -144,12 +137,12 @@
           <EntitySet Name="ProjectSelectionTBs" EntityType="WorkloadDBModel.ProjectSelectionTB" />
           <EntitySet Name="ProjectTBs" EntityType="WorkloadDBModel.ProjectTB" />
           <EntitySet Name="UnitTBs" EntityType="WorkloadDBModel.UnitTB" />
-          <EntitySet Name="WorkloadRecords" EntityType="WorkloadDBModel.WorkloadRecord" />
           <EntitySet Name="C5dayHolidayTB" EntityType="WorkloadDBModel.C5dayHolidayTB" />
           <EntitySet Name="C6dayHolidayTB" EntityType="WorkloadDBModel.C6dayHolidayTB" />
           <EntitySet Name="RecordMonthTBs" EntityType="WorkloadDBModel.RecordMonthTB" />
           <EntitySet Name="WeekTBs" EntityType="WorkloadDBModel.WeekTB" />
           <EntitySet Name="WorkloadRecordTBs" EntityType="WorkloadDBModel.WorkloadRecordTB" />
+          <EntitySet Name="ReportMonthTBs" EntityType="WorkloadDBModel.ReportMonthTB" />
         </EntityContainer>
         <EntityType Name="EmployeeTB">
           <Key>
@@ -200,24 +193,7 @@
           <Property Name="Division" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ManagerID" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="UnitActive" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="WorkloadRecord">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Year" Type="Int32" />
-          <Property Name="Month" Type="Int32" />
-          <Property Name="ProjectID" Type="Int32" />
-          <Property Name="WorkloadWeek1" Type="Double" />
-          <Property Name="WorkloadWeek2" Type="Double" />
-          <Property Name="WorkloadWeek3" Type="Double" />
-          <Property Name="WorkloadWeek4" Type="Double" />
-          <Property Name="WorkloadWeek5" Type="Double" />
-          <Property Name="WorkloadWeek6" Type="Double" />
-          <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="CommitData" Type="Boolean" />
+          <Property Name="CostCenter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="C5dayHolidayTB">
           <Key>
@@ -268,6 +244,16 @@
           <Property Name="Workload" Type="Double" />
           <Property Name="CommitData" Type="Boolean" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ReportMonthTB">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="year" Type="Int32" />
+          <Property Name="month" Type="Int32" />
+          <Property Name="firstWeek" Type="Int32" />
+          <Property Name="lastWeek" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -321,30 +307,12 @@
           <EntitySetMapping Name="UnitTBs">
             <EntityTypeMapping TypeName="WorkloadDBModel.UnitTB">
               <MappingFragment StoreEntitySet="UnitTB">
+                <ScalarProperty Name="CostCenter" ColumnName="CostCenter" />
                 <ScalarProperty Name="UnitActive" ColumnName="UnitActive" />
                 <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
                 <ScalarProperty Name="Division" ColumnName="Division" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="UnitID" ColumnName="UnitID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="WorkloadRecords">
-            <EntityTypeMapping TypeName="WorkloadDBModel.WorkloadRecord">
-              <MappingFragment StoreEntitySet="WorkloadRecord">
-                <ScalarProperty Name="CommitData" ColumnName="CommitData" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="WorkloadWeek6" ColumnName="WorkloadWeek6" />
-                <ScalarProperty Name="WorkloadWeek5" ColumnName="WorkloadWeek5" />
-                <ScalarProperty Name="WorkloadWeek4" ColumnName="WorkloadWeek4" />
-                <ScalarProperty Name="WorkloadWeek3" ColumnName="WorkloadWeek3" />
-                <ScalarProperty Name="WorkloadWeek2" ColumnName="WorkloadWeek2" />
-                <ScalarProperty Name="WorkloadWeek1" ColumnName="WorkloadWeek1" />
-                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
-                <ScalarProperty Name="Month" ColumnName="Month" />
-                <ScalarProperty Name="Year" ColumnName="Year" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -400,6 +368,17 @@
                 <ScalarProperty Name="Year" ColumnName="Year" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportMonthTBs">
+            <EntityTypeMapping TypeName="WorkloadDBModel.ReportMonthTB">
+              <MappingFragment StoreEntitySet="ReportMonthTB">
+                <ScalarProperty Name="lastWeek" ColumnName="lastWeek" />
+                <ScalarProperty Name="firstWeek" ColumnName="firstWeek" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

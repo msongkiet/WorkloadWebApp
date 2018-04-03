@@ -1,0 +1,76 @@
+﻿@model IEnumerable<WorkloadWebApp.Models.ProjectTB>
+
+@{
+    ViewBag.Title = "ProjectDatabase";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ProjectDatabase</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@{
+    if (Model != null)
+    {
+        <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProjectName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProjectType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProjectCategory)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProjectCharacteristic)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BusinessStrategy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProjectOwner)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProjectActive)
+                    </th>
+                    <th></th>
+                </tr>
+
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProjectName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProjectType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProjectCategory)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProjectCharacteristic)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BusinessStrategy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProjectOwner)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProjectActive)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.ProjectID }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.ProjectID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.ProjectID })
+                    </td>
+                </tr>
+            }
+
+            </table>
+
+    }
+}

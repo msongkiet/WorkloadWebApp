@@ -32,7 +32,7 @@
                 <div>
                     <select onchange="CreateTable()" class="form-control" id="Year" name="Year">
                         @{
-                            for (var i = 2017; i <= DateTime.Now.Year; i++)
+                            for (var i = 2018; i <= DateTime.Now.Year; i++)
                             {
                                 if (i == DateTime.Now.Year)
                                 {
@@ -70,135 +70,35 @@
 
 <script type="text/javascript">
 
-    function calculateWeek1() {
-        var sumHour = 0;
-        var stdHourWeek1 = parseInt(document.getElementById("stdHourWeek1").innerHTML);
-        for (var i = 0; i < @Model.Count(); i++) {
-            var Hour = parseFloat(document.getElementsByName("Week1")[i].value);
-            if (isNaN(Hour)) {
-                sumHour = sumHour;
-            }
-            else {
-                sumHour = sumHour + Hour;
-            }
-        }
-        if (sumHour < stdHourWeek1) {
-            document.getElementById("sumOfWeek1").innerHTML = sumHour;
-            document.getElementById("sumOfWeek1").style.color = "#ff0000";
-        }
-        else {
-            document.getElementById("sumOfWeek1").innerHTML = sumHour;
-            document.getElementById("sumOfWeek1").style.color = "#000000";
-        }
-    }
+    function calculateSumHour() {
+        var intFirstWeek = parseInt(document.getElementById('FirstWeek').value);
+        var intLastWeek = parseInt(document.getElementById('LastWeek').value);
+        for (var i = intFirstWeek; i <= intLastWeek; i++) {
+            var sumHour = 0;
+            var sumOfWeek = "sumOfWeek" + i.toString();
+            var stdHr = "stdHour" + i.toString();
+            var stdHour = document.getElementById(stdHr).value
+            var workload = "WorkloadWeek" + i.toString();
 
-    function calculateWeek2() {
-        var sumHour = 0;
-        var stdHourWeek2 = parseInt(document.getElementById("stdHourWeek2").innerHTML);
-        for (var i = 0; i < @Model.Count(); i++) {
-            var Hour = parseFloat(document.getElementsByName("Week2")[i].value);
-            if (isNaN(Hour)) {
-                sumHour = sumHour;
+            for (var k = 0; k < @Model.Count(); k++) {
+                var workloadHr = parseFloat(document.getElementsByName(workload)[k].value);
+                
+                if (isNaN(workloadHr)) {
+                    sumHour = sumHour;
+                }
+                else {
+                    sumHour = sumHour + workloadHr;
+                }
             }
-            else {
-                sumHour = sumHour + Hour;
-            }
-        }
-        if (sumHour < stdHourWeek2) {
-            document.getElementById("sumOfWeek2").innerHTML = sumHour;
-            document.getElementById("sumOfWeek2").style.color = "#ff0000";
-        }
-        else {
-            document.getElementById("sumOfWeek2").innerHTML = sumHour;
-            document.getElementById("sumOfWeek2").style.color = "#000000";
-        }
-    }
 
-    function calculateWeek3() {
-        var sumHour = 0;
-        var stdHourWeek3 = parseInt(document.getElementById("stdHourWeek3").innerHTML);
-        for (var i = 0; i < @Model.Count(); i++) {
-            var Hour = parseFloat(document.getElementsByName("Week3")[i].value);
-            if (isNaN(Hour)) {
-                sumHour = sumHour;
+            if (sumHour < stdHour) {
+                document.getElementById(sumOfWeek).innerHTML = sumHour.toFixed(1);
+                document.getElementById(sumOfWeek).style.color = "#ff0000";
             }
             else {
-                sumHour = sumHour + Hour;
+                document.getElementById(sumOfWeek).innerHTML = sumHour.toFixed(1);
+                document.getElementById(sumOfWeek).style.color = "#000000";
             }
-        }
-        if (sumHour < stdHourWeek3) {
-            document.getElementById("sumOfWeek3").innerHTML = sumHour;
-            document.getElementById("sumOfWeek3").style.color = "#ff0000";
-        }
-        else {
-            document.getElementById("sumOfWeek3").innerHTML = sumHour;
-            document.getElementById("sumOfWeek3").style.color = "#000000";
-        }
-    }
-
-    function calculateWeek4() {
-        var sumHour = 0;
-        var stdHourWeek4 = parseInt(document.getElementById("stdHourWeek4").innerHTML);
-        for (var i = 0; i < @Model.Count(); i++) {
-            var Hour = parseFloat(document.getElementsByName("Week4")[i].value);
-            if (isNaN(Hour)) {
-                sumHour = sumHour;
-            }
-            else {
-                sumHour = sumHour + Hour;
-            }
-        }
-        if (sumHour < stdHourWeek4) {
-            document.getElementById("sumOfWeek4").innerHTML = sumHour;
-            document.getElementById("sumOfWeek4").style.color = "#ff0000";
-        }
-        else {
-            document.getElementById("sumOfWeek4").innerHTML = sumHour;
-            document.getElementById("sumOfWeek4").style.color = "#000000";
-        }
-    }
-
-    function calculateWeek5() {
-        var sumHour = 0;
-        var stdHourWeek5 = parseInt(document.getElementById("stdHourWeek5").innerHTML);
-        for (var i = 0; i < @Model.Count(); i++) {
-            var Hour = parseFloat(document.getElementsByName("Week5")[i].value);
-            if (isNaN(Hour)) {
-                sumHour = sumHour;
-            }
-            else {
-                sumHour = sumHour + Hour;
-            }
-        }
-        if (sumHour < stdHourWeek5) {
-            document.getElementById("sumOfWeek5").innerHTML = sumHour;
-            document.getElementById("sumOfWeek5").style.color = "#ff0000";
-        }
-        else {
-            document.getElementById("sumOfWeek5").innerHTML = sumHour;
-            document.getElementById("sumOfWeek5").style.color = "#000000";
-        }
-    }
-
-    function calculateWeek6() {
-        var sumHour = 0;
-        var stdHourWeek6 = parseInt(document.getElementById("stdHourWeek6").innerHTML);
-        for (var i = 0; i < @Model.Count(); i++) {
-            var Hour = parseFloat(document.getElementsByName("Week6")[i].value);
-            if (isNaN(Hour)) {
-                sumHour = sumHour;
-            }
-            else {
-                sumHour = sumHour + Hour;
-            }
-        }
-        if (sumHour < stdHourWeek6) {
-            document.getElementById("sumOfWeek6").innerHTML = sumHour;
-            document.getElementById("sumOfWeek6").style.color = "#ff0000";
-        }
-        else {
-            document.getElementById("sumOfWeek6").innerHTML = sumHour;
-            document.getElementById("sumOfWeek6").style.color = "#000000";
         }
     }
 
@@ -212,12 +112,15 @@
             url: '@Url.Action("CreateTable", "Workload")',
             data: SelectionForm,
             success: function (response) {
-                var FirstDate = response.FirstDateList;   
+                var FirstDate = response.FirstDateList;
                 var LastDate = response.LastDateList;
                 var totalWeeks = response.totalWeeks;
                 var FirstWeek = response.intFirstWeek;
                 var LastWeek = response.intLastWeek;
                 var stdHour = response.stdHour;
+
+                var intFirstWeek = parseInt(FirstWeek);
+                var intLastWeek = parseInt(LastWeek);
 
                 $("#WorkloadTable_thead").empty();
                 $("#WorkloadTable_tbody").empty();
@@ -225,22 +128,19 @@
                 //Generate table workload header
                 $("#WorkloadTable_thead").append('<tr>');
                 $("#WorkloadTable_thead").append('<th scope="col">Project</th>');
-                for (var i = 1; i <= totalWeeks; i++) {
-                    $("#WorkloadTable_thead").append('<th id="colWeek' + i + '" scope="col" style="width:100px"><label id="DateWeek' + i + '"></label></th>');              
+                for (var i = intFirstWeek; i <= intLastWeek; i++) {
+                    $("#WorkloadTable_thead").append('<th id="colWeek' + i + '" scope="col" style="width:100px"><label id="DateWeek' + i + '"></label></th>');
                 }
                 $("#WorkloadTable_thead").append('<th scope="col">Remark</th>');
                 $("#WorkloadTable_thead").append('<tr>');
-
 
                 //Generate table workload body
                 for (var j = 0; j < @Model.Count(); j++)
                 {
                     $("#WorkloadTable_tbody").append('<tr>');
                     $("#WorkloadTable_tbody").append('<th scope="row"><input id="ProjectID" name="ProjectID" hidden="hidden" value="' + parseData[j].ProjectID +'"/>' + parseData[j].ProjectName + '</th>');
-                    for (var i = 1; i <= totalWeeks; i++) {
-                        //$("#WorkloadTable_tbody").append('<td id="colWeek' + i + '" scope="col"><input id="Week' + i + '" name="Week' + i + '" type="number" style="width:100px" onchange="calculateWeek' + i + '()"/></td>');
-                        $("#WorkloadTable_tbody").append('<td id="colWeek' + i + '" scope="col"><input id="Week' + i + '" name="Workload' + j + '"  type="number" style="width:100px" onchange="calculateWeek' + i + '()"/></td>');
-
+                    for (var i = intFirstWeek; i <= intLastWeek; i++) {
+                        $("#WorkloadTable_tbody").append('<td id="colWeek' + i + '" scope="col"><input id="WorkloadWeek' + i + '" name="WorkloadWeek' + i + '" type="number" style="width:100px" onchange="calculateSumHour()"/></td>');
                     }
                     $("#WorkloadTable_tbody").append('<td><textarea name="Remark"></textarea></td>');
                     $("#WorkloadTable_tbody").append('</tr>');
@@ -248,7 +148,7 @@
 
                 $("#WorkloadTable_tbody").append('<tr>');
                 $("#WorkloadTable_tbody").append('<th scope="row">Total</th>');
-                for (var i = 1; i <= totalWeeks; i++) {
+                for (var i = intFirstWeek; i <= intLastWeek; i++) {
                     $("#WorkloadTable_tbody").append('<td id="colWeek' + i + '" scope="col"><label id="sumOfWeek' + i + '"></label></td>');
                 }
                 $("#WorkloadTable_tbody").append('</tr>');
@@ -256,47 +156,31 @@
                 $("#WorkloadTable_tbody").append('<tr>');
                 $("#WorkloadTable_tbody").append('<th scope="row">Standard Hour</th>');
 
-                for (var i = 1; i <= totalWeeks; i++) {
+                for (var i = intFirstWeek; i <= intLastWeek; i++) {
                     $("#WorkloadTable_tbody").append('<td id="colWeek' + i + '" scope="col"><label id="stdHourWeek' + i + '"></label></td>');
                 }
                 $("#WorkloadTable_tbody").append('</tr>');
-
-                $("#WorkloadTable_tbody").append('<input id="totalWeek" name="totalWeek" type="number" hidden="hidden" value="' + totalWeeks + '"/>');
                 $("#WorkloadTable_tbody").append('<input id="FirstWeek" name="FirstWeek" type="number" hidden="hidden" value="' + FirstWeek + '"/>');
                 $("#WorkloadTable_tbody").append('<input id="LastWeek" name="LastWeek" type="number" hidden="hidden" value="' + LastWeek + '"/>');
-                //for (var i = FirstWeek; i <= LastWeek; i++) {
-                //    $("#WorkloadTable_tbody").append('<input id="WeekNo" name="WeekNo" type="number" hidden="hidden" value="' + i + '"/>');
-                //}
 
-                for (var i = 0; i < totalWeeks; i++) {
-                    var j = i + 1;
-                    var Date = "DateWeek" + j.toString();
-                    var stdHr = "stdHourWeek" + j.toString();
-                    document.getElementById(Date).innerHTML = FirstDate[i] + "<br>" + LastDate[i];
-                    document.getElementById(stdHr).innerHTML = stdHour[i];
+                for (var i = intFirstWeek; i <= intLastWeek; i++) {
+                    var Date = "DateWeek" + i.toString();
+                    var stdHr = "stdHourWeek" + i.toString();
+                    j = i - intFirstWeek;
+                    document.getElementById(Date).innerHTML = FirstDate[j] + "<br>" + LastDate[j];
+                    document.getElementById(stdHr).innerHTML = stdHour[j];
+                    $("#WorkloadTable_tbody").append('<input id="stdHour' + i + '" name="stdHour' + i + '" type="number" hidden="hidden" value="' + stdHour[j] + '"/>');
                 }
 
-                    calculateWeek1();
-                    calculateWeek2();
-                    calculateWeek3();
-                    calculateWeek4();
-                    calculateWeek5();
-                    calculateWeek6();
-
-                document.getElementById("totalWeek").innerHTML = totalWeek;
-
-                //LoadLastData();
+                calculateSumHour();
+                LoadLastData();
             }
         });
-
-
-
     }
 
     function Submit() {
         event.preventDefault();
-        var SelectionForm = $("#DateSelectForm,#WorkloadForm").serialize();
-        alert(SelectionForm);
+        var SelectionForm = $("#DateSelectForm,#WorkloadForm").serialize();  
         $.ajax({
             type: "POST",
             url: '@Url.Action("SaveWorkloadDB", "Workload")',
@@ -314,91 +198,29 @@
         var JsonData = '@Html.Raw(Json.Encode(Model))';
         var parseData = $.parseJSON(JsonData);
 
-        //alert(SelectionForm);
         $.ajax({
             type: "POST",
             url: '@Url.Action("LoadLastData", "Workload")',
             data: SelectionForm,
             success: function (response) {
-                var totalWeek = response.totalWeek;
                 var listWorkload = response.list;
                 var countList = response.count;
+                var intFirstWeek = parseInt(response.intFirstWeek);
+                var intLastWeek = parseInt(response.intLastWeek);
 
-                if (totalWeek == 4) {
-                    var Week1 = document.getElementsByName("Week1");
-                    var Week2 = document.getElementsByName("Week2");
-                    var Week3 = document.getElementsByName("Week3");
-                    var Week4 = document.getElementsByName("Week4");
-                    var Remark = document.getElementsByName("Remark");
-                    for (var i = 0; i <@Model.Count() ; i++) {
-                        for (var j = 0; j < countList; j++) {
-                            if (parseData[i].ProjectID == listWorkload[j].ProjectID) {
-                                Week1[i].value = listWorkload[j].WorkloadWeek1;
-                                Week2[i].value = listWorkload[j].WorkloadWeek2;
-                                Week3[i].value = listWorkload[j].WorkloadWeek3;
-                                Week4[i].value = listWorkload[j].WorkloadWeek4;
-                                Remark[i].value = listWorkload[j].Remark;
+                for (var i = 0; i <@Model.Count() ; i++) {
+                    for (var j = intFirstWeek; j <= intLastWeek; j++) {
+                        var Workload = "WorkloadWeek" + j.toString()
+                        var Remark = "Remark";
+                        for (var k = 0; k < countList; k++) {
+                            if (parseData[i].ProjectID == listWorkload[k].ProjectID && j == listWorkload[k].Week) {
+                                document.getElementsByName(Workload)[i].value = listWorkload[k].Workload;
+                                document.getElementsByName(Remark)[i].value = listWorkload[k].Remark;
                             }
-                        }
+                        }                      
                     }
-                    calculateWeek1();
-                    calculateWeek2();
-                    calculateWeek3();
-                    calculateWeek4();
                 }
-                else if (totalWeek == 5) {
-                    var Week1 = document.getElementsByName("Week1");
-                    var Week2 = document.getElementsByName("Week2");
-                    var Week3 = document.getElementsByName("Week3");
-                    var Week4 = document.getElementsByName("Week4");
-                    var Week5 = document.getElementsByName("Week5");
-                    var Remark = document.getElementsByName("Remark");
-                    for (var i = 0; i <@Model.Count() ; i++) {
-                        for (var j = 0; j < countList; j++) {
-                            if (parseData[i].ProjectID == listWorkload[j].ProjectID) {
-                                Week1[i].value = listWorkload[j].WorkloadWeek1;
-                                Week2[i].value = listWorkload[j].WorkloadWeek2;
-                                Week3[i].value = listWorkload[j].WorkloadWeek3;
-                                Week4[i].value = listWorkload[j].WorkloadWeek4;
-                                Week5[i].value = listWorkload[j].WorkloadWeek5;
-                                Remark[i].value = listWorkload[j].Remark;
-                            }
-                        }
-                    }
-                    calculateWeek1();
-                    calculateWeek2();
-                    calculateWeek3();
-                    calculateWeek4();
-                    calculateWeek5();
-                }
-                else if (totalWeek == 6) {
-                    var Week1 = document.getElementsByName("Week1");
-                    var Week2 = document.getElementsByName("Week2");
-                    var Week3 = document.getElementsByName("Week3");
-                    var Week4 = document.getElementsByName("Week4");
-                    var Week5 = document.getElementsByName("Week5");
-                    var Week6 = document.getElementsByName("Week6");
-                    var Remark = document.getElementsByName("Remark");
-                    for (var i = 0; i <@Model.Count() ; i++) {
-                        for (var j = 0; j < countList; j++) {
-                            if (parseData[i].ProjectID == listWorkload[j].ProjectID) {
-                                Week1[i].value = listWorkload[j].WorkloadWeek1;
-                                Week2[i].value = listWorkload[j].WorkloadWeek2;
-                                Week3[i].value = listWorkload[j].WorkloadWeek3;
-                                Week4[i].value = listWorkload[j].WorkloadWeek4;
-                                Week5[i].value = listWorkload[j].WorkloadWeek5;
-                                Week6[i].value = listWorkload[j].WorkloadWeek6;
-                                Remark[i].value = listWorkload[j].Remark;
-                            }
-                        }
-                    }
-                    calculateWeek1();
-                    calculateWeek2();
-                    calculateWeek3();
-                    calculateWeek4();
-                    calculateWeek5();
-                    calculateWeek6();
-                }               
+                calculateSumHour();
             }
         });
     }

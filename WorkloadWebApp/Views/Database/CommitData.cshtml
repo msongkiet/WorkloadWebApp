@@ -1,0 +1,125 @@
+﻿@using System.Globalization
+@{
+    ViewBag.Title = "CommitData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="commitForm">
+    <section class="row" style="margin-top: 10px;">
+        <h2 class="col-md-4">Commit Data</h2>
+
+        <div class="col-md-2" role="group">
+            <div class="float-right">
+                <select class="form-control" id="Month" name="Month">
+                    @{ for (var i = 1; i < 13; i++)
+                    {
+                        if (i == DateTime.Now.Month)
+                        {
+                            <option selected value="@i">@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i)</option>
+                    }
+                    else
+                    {
+                        <option value="@i">@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i)</option>
+                }
+            }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-2" role="group">
+            <div class="float-right">
+                <div>
+                    <select class="form-control" id="Year" name="Year">
+                        @{
+                        for (var i = 2018; i <= DateTime.Now.Year; i++)
+                        {
+                            if (i == DateTime.Now.Year)
+                            {
+                                <option selected value="@i">@i</option>
+                        }
+                        else
+                        {
+                            <option value="@i">@i</option>
+                    }
+                }
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2" role="group">
+            <div class="float-right">
+                <div>
+                    <select class="form-control" id="Commit" name="Commit">
+                        <option value="0">Not Commit</option>
+                        <option value="1">Commit</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2" role="group">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#commitDBModal" onclick="commitPopup()">
+                Submit
+            </button>
+        </div>
+    </section>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="commitDBModal" tabindex="-1" role="dialog" aria-labelledby="commitDBModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="commitDBModalLabel">Commit Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="Submit()">Commit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<script type="text/javascript">
+
+    function Submit() {
+        event.preventDefault();
+        var SelectionForm = $("#commitForm").serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("UpdateCommitData", "Database")',
+            data: SelectionForm,
+            success: function (response) {
+                alert("Success");
+                window.location.href = "\CommitData";
+            }
+        });
+    }
+
+    function commitPopup() {
+        var SelectionForm = $("#commitForm").serialize();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("PopupCommitData", "Database")',
+            data: SelectionForm,
+            success: function (response) {
+                var FirstDate = response.FirstDate;
+                var LastDate = response.LastDate;
+                $("#modal-body").empty();
+                $("#modal-body").append(FirstDate + '-' + LastDate);
+                $("#modal-body").append('<br />');
+            }
+        });
+    }
+
+</script>

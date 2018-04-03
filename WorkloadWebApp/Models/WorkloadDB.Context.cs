@@ -29,11 +29,11 @@ namespace WorkloadWebApp.Models
         public virtual DbSet<ProjectSelectionTB> ProjectSelectionTBs { get; set; }
         public virtual DbSet<ProjectTB> ProjectTBs { get; set; }
         public virtual DbSet<UnitTB> UnitTBs { get; set; }
-        public virtual DbSet<WorkloadRecord> WorkloadRecords { get; set; }
         public virtual DbSet<C5dayHolidayTB> C5dayHolidayTB { get; set; }
         public virtual DbSet<C6dayHolidayTB> C6dayHolidayTB { get; set; }
         public virtual DbSet<RecordMonthTB> RecordMonthTBs { get; set; }
         public virtual DbSet<WeekTB> WeekTBs { get; set; }
         public virtual DbSet<WorkloadRecordTB> WorkloadRecordTBs { get; set; }
+        public virtual DbSet<ReportMonthTB> ReportMonthTBs { get; set; }
     }
 }
